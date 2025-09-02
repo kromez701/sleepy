@@ -16241,4 +16241,65 @@ const FIXED_PRICE = "£39.97";
 
 
 </script>
+
+<script>
+    // Method 1: Target by data-id attribute (most specific)
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButton = document.querySelector('button[data-id="g0NzciQ5h6"]');
+    
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', function(event) {
+            // Prevent any default behavior
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Replace this URL with your desired redirect destination
+            const redirectUrl = 'https://n2kzpa-uw.myshopify.com/cart/52341399912781:1';
+            
+            // Force redirect immediately
+            window.location.href = redirectUrl;
+        });
+    }
+});
+
+// Method 2: Alternative approach using class selector (backup)
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButtons = document.querySelectorAll('.tcustomizer-submit-button');
+    
+    addToCartButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            // Prevent any default behavior
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Replace this URL with your desired redirect destination
+            const redirectUrl = 'https://n2kzpa-uw.myshopify.com/cart/52341399912781:1';
+            
+            // Force redirect immediately
+            window.location.href = redirectUrl;
+        });
+    });
+});
+
+// Method 3: Most aggressive approach - captures ANY click on buttons with "Add to cart" text
+document.addEventListener('click', function(event) {
+    const clickedElement = event.target;
+    
+    // Check if clicked element or its parent contains "Add to cart" text
+    if (clickedElement.closest('button') && 
+        (clickedElement.textContent.includes('Add to cart') || 
+         clickedElement.closest('button').textContent.includes('Add to cart'))) {
+        
+        // Prevent any default behavior
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Replace this URL with your desired redirect destination
+        const redirectUrl = 'https://n2kzpa-uw.myshopify.com/cart/52341399912781:1';
+        
+        // Force redirect immediately
+        window.location.href = redirectUrl;
+    }
+}, true); // Use capture phase to intercept before other handlers
+</script>
 </html>
