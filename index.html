@@ -16222,18 +16222,22 @@ const FIXED_PRICE = "£39.97";
   function setFixedPrice() {
     const priceElements = 
       
-      document.querySelector(
+      document.querySelectorAll(
         ".gp-price.gp-money.gp-decoration-g-text-2.gp-text-instant"
       )
  
      
-    
-    
-      if (priceElements.textContent !== FIXED_PRICE) {
-        priceElements.textContent = FIXED_PRICE;
-        // Immediately hide any price that tries to show different values
-        
+    priceElements.forEach(el => {
+      if (el.textContent !== FIXED_PRICE) {
+        el.textContent = FIXED_PRICE;
       }
+    })
+    
+      // if (priceElements.textContent !== FIXED_PRICE) {
+      //   priceElements.textContent = FIXED_PRICE;
+        
+        
+      // }
   
   }
   setInterval(setFixedPrice, 100);
